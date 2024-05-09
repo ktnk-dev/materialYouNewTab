@@ -3,10 +3,16 @@
 + Added custom background support
 + Added background blur support
 + Added background brightness support
-+ Added GitHub search engine
 
-- Removed city name due privacy
++ Added custom city name input
+
++ Added GitHub search engine
+```
+```diff
+- Removed city name from page due privacy
+
 - Removed shortcuts
+
 - Removed "Search with" placeholder
 - Removed DuckDuckGo search engine
 - Removed Bing search engine
