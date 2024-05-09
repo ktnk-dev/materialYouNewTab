@@ -93,6 +93,7 @@
 .bgLightTint {
     fill: var(--accentLightTint-blue);
     background-color: var(--accentLightTint-blue);
+
 }
 
 .lessDark {
@@ -1020,7 +1021,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--bg-color-blue);
+    background-color: var(--accentLightTint-blue);
     /* Background color when off */
     transition: 0.4s;
     border-radius: 34px;

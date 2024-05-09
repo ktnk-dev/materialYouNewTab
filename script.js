@@ -51,6 +51,23 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
 
 
+        //! FORK DIFF / ktnk-dev
+        const savedCity = localStorage.getItem("city");
+        const wallpaperCityInput = document.getElementById("userCITY");
+
+        if (savedBlur) {
+            wallpaperCityInput.value = savedCity;
+        }
+
+        const saveWallpaperCityButton = document.getElementById("saveCITY");
+
+        saveWallpaperCityButton.addEventListener("click", () => {
+            const newCity = wallpaperCityInput.value;
+            localStorage.setItem("city", newCity);
+            window.location.reload();
+        });
+
+
         // Load the API key from localStorage
         const savedApiKey = localStorage.getItem("weatherApiKey");
         const userAPIInput = document.getElementById("userAPI");
@@ -80,16 +97,21 @@ window.addEventListener('DOMContentLoaded', async () => {
         const apiKey = userApiKey || defaultApiKey;
 
         // Getting current user location
-        const geoLocation = 'https://geolocation-db.com/json/';
-        const locationData = await fetch(geoLocation);
-        const parsedLocation = await locationData.json();
-        const currentUserLocation = parsedLocation.IPv4;
+        if (!savedCity) {
+            const geoLocation = 'https://geolocation-db.com/json/';
+            const locationData = await fetch(geoLocation);
+            const parsedLocation = await locationData.json();
+            currentUserLocation = parsedLocation.IPv4;
+            console.log(parsedLocation)
+        } else {
+            currentUserLocation = savedCity;
+        }
 
         const weatherApi = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${currentUserLocation}&aqi=no`;
 
         const data = await fetch(weatherApi);
         const parsedData = await data.json();
-        console.log(parsedData)
+        console.log(weatherApi, parsedData)
 
         // Weather data
         const conditionText = parsedData.current.condition.text;
