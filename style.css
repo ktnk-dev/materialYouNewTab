@@ -139,12 +139,12 @@ body {
 
 #clock svg {
     position: absolute;
-    animation: clockAnm 1s;
+    animation: clockAnm 99s infinite linear;
 }
 
 @keyframes clockAnm {
     from {
-        transform: rotate(40deg);
+        transform: rotate(360deg);
     }
 
     to {
@@ -171,6 +171,8 @@ body {
     top: -90px;
     transform-origin: bottom;
     border-radius: 10px;
+
+    transition: transform .4s;
 }
 
 #hour {
@@ -206,6 +208,8 @@ body {
 
 #second {
     background-color: #00000000;
+    transition: transform 1s linear;
+
 }
 
 #second::after {
