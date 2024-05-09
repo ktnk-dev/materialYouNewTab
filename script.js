@@ -1,5 +1,56 @@
 window.addEventListener('DOMContentLoaded', async () => {
     try {
+
+        //! FORK DIFF / ktnk-dev
+        const savedWallpaper = localStorage.getItem("wallpaper");
+        const wallpaperInput = document.getElementById("userIMG");
+
+        if (savedWallpaper) {
+            wallpaperInput.value = savedWallpaper;
+        }
+
+        const saveWallpaperButton = document.getElementById("saveIMG");
+
+        saveWallpaperButton.addEventListener("click", () => {
+            const newWallpaper = wallpaperInput.value;
+            localStorage.setItem("wallpaper", newWallpaper);
+            window.location.reload();
+        });
+
+
+        //! FORK DIFF / ktnk-dev
+        const savedBlur = localStorage.getItem("blur");
+        const wallpaperBlurInput = document.getElementById("userBLUR");
+
+        if (savedBlur) {
+            wallpaperBlurInput.value = savedBlur;
+        }
+
+        const saveWallpaperBlurButton = document.getElementById("saveBLUR");
+
+        saveWallpaperBlurButton.addEventListener("click", () => {
+            const newBlur = wallpaperBlurInput.value;
+            localStorage.setItem("blur", newBlur);
+            window.location.reload();
+        });
+
+        //! FORK DIFF / ktnk-dev
+        const savedBR = localStorage.getItem("brightness");
+        const wallpaperBRInput = document.getElementById("userBR");
+
+        if (savedBlur) {
+            wallpaperBRInput.value = savedBR;
+        }
+
+        const saveWallpaperBRButton = document.getElementById("saveBR");
+
+        saveWallpaperBRButton.addEventListener("click", () => {
+            const newBR = wallpaperBRInput.value;
+            localStorage.setItem("brightness", newBR);
+            window.location.reload();
+        });
+
+
         // Load the API key from localStorage
         const savedApiKey = localStorage.getItem("weatherApiKey");
         const userAPIInput = document.getElementById("userAPI");
@@ -38,6 +89,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         const data = await fetch(weatherApi);
         const parsedData = await data.json();
+        console.log(parsedData)
 
         // Weather data
         const conditionText = parsedData.current.condition.text;
@@ -136,10 +188,9 @@ document.addEventListener("DOMContentLoaded", () => {
         var selectedOption = document.querySelector('input[name="search-engine"]:checked').value;
         var searchTerm = searchInput.value;
         var searchEngines = {
-            engine1: 'https://duckduckgo.com/?q=',
-            engine2: 'https://www.google.com/search?q=',
-            engine3: 'https://bing.com/?q=',
-            engine4: 'https://www.youtube.com/results?search_query='
+            engine1: 'https://www.google.com/search?q=',
+            engine2: 'https://www.youtube.com/results?search_query=',
+            engine3: 'https://github.com/search?type=repositories&q='
         };
 
         if (searchTerm !== "") {
@@ -193,14 +244,21 @@ const radioButtons = document.querySelectorAll('.colorPlate');
 const themeStorageKey = 'selectedTheme';
 
 const applySelectedTheme = (colorValue) => {
+    var wallpaper = localStorage.getItem("wallpaper")
+    var blur = localStorage.getItem("blur")
+    var brightness = localStorage.getItem("brightness")
     if (colorValue != "blue") {
-        document.documentElement.style.setProperty('--bg-color-blue', `var(--bg-color-${colorValue})`);
+        !wallpaper 
+        ? document.documentElement.style.setProperty('--bg-color-blue', `var(--bg-color-${colorValue})`)
+        : document.documentElement.style.setProperty('--bg-color-blue', `url("${wallpaper}")`);
         document.documentElement.style.setProperty('--accentLightTint-blue', `var(--accentLightTint-${colorValue})`);
         document.documentElement.style.setProperty('--darkerColor-blue', `var(--darkerColor-${colorValue})`);
         document.documentElement.style.setProperty('--darkColor-blue', `var(--darkColor-${colorValue})`);
         document.documentElement.style.setProperty('--textColorDark-blue', `var(--textColorDark-${colorValue})`);
     } else {
-        document.documentElement.style.setProperty('--bg-color-blue', '#BBD6FD');
+        !wallpaper 
+        ? document.documentElement.style.setProperty('--bg-color-blue', '#BBD6FD')
+        : document.documentElement.style.setProperty('--bg-color-blue', `url("${wallpaper}")`);
         document.documentElement.style.setProperty('--accentLightTint-blue', '#E2EEFF');
         document.documentElement.style.setProperty('--darkerColor-blue', '#3569b2');
         document.documentElement.style.setProperty('--darkColor-blue', '#4382EC');
@@ -208,7 +266,16 @@ const applySelectedTheme = (colorValue) => {
     }
     if (colorValue === "dark") {
         // Please note: The dark theme is currently under development and may have issues.
-        alert("Please note: The dark theme is currently under development and may have issues.")
+    }
+    if (blur) {
+        document.documentElement.style.setProperty('--blur', `blur(${blur}px)`);
+    } else {
+        document.documentElement.style.setProperty('--blur', `blur(0px)`);
+    }
+    if (brightness) {
+        document.documentElement.style.setProperty('--brightness', `brightness(${brightness}%)`);
+    } else {
+        document.documentElement.style.setProperty('--brightness', `brightness(50%)`);
     }
 };
 
