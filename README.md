@@ -7,6 +7,8 @@
 + Added custom city name input
 
 + Added GitHub search engine
+
++ Better clock animations
 ```
 ```diff
 - Removed city name from page due privacy
