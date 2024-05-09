@@ -208,7 +208,7 @@ body {
 
 #second {
     background-color: #00000000;
-    transition: transform 1s linear;
+    transition: transform 1s;
 
 }
 
