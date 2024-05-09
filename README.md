@@ -1,4 +1,18 @@
-Initialized : Sun 20 Aug 2023 03∶41∶08 PM IST
+# Fork update
+```diff
++ Added custom background support
++ Added background blur support
++ Added background brightness support
++ Added GitHub search engine
+
+- Removed city name due privacy
+- Removed shortcuts
+- Removed "Search with" placeholder
+- Removed DuckDuckGo search engine
+- Removed Bing search engine
+
+```
+
 # Material You NewTab
 🚀 Experience a sleek NewTab or homepage theme for your browser, inspired by Google's 'Material You' design. This extension offers a wealth of functionality, including the ability to search using your preferred search engine (Google, DuckDuckGo, Bing, YouTube) without needing to change the search engine from the settings. It also provides convenient shortcuts to your favorite websites, theming functionality, and much more. 🛡️ This extension doesn't require any permissions, ensuring your privacy and security while browsing.
 
