@@ -1,3 +1,9 @@
+> [!WARNING]
+> **Developing discontinued** <br>
+> Why? Latest Google Chrome update allows to customize background image <br>
+> I found default Chrome homepage much better than this custom homepage
+
+
 # Fork update
 ```diff
 + Added custom background support
